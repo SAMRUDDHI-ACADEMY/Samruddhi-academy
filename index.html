@@ -7,15 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-        // Configure Tailwind theme colors based on the logo
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'sca-blue': '#001489', // From 'S' in logo
-                        'sca-orange': '#FF6720', // From logo segment
-                        'sca-purple': '#660099', // From logo segment
-                        'sca-green': '#33CC33', // From logo segment
+                        'sca-blue': '#001489', 
+                        'sca-orange': '#FF6720', 
+                        'sca-purple': '#660099', 
+                        'sca-green': '#33CC33', 
                     }
                 }
             }
@@ -23,9 +22,13 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        /* Slider hide/show logic */
         .testimonial-slide { display: none; }
         .testimonial-slide.active { display: block; }
+        .course-detail-pane { display: none; }
+        .course-detail-pane.active { display: block; }
+        
+        /* Dropdown CSS */
+        .dropdown:hover .dropdown-menu { display: block; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -38,36 +41,65 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="./img/logo.jpeg" alt="Samruddhi Academy Logo" class="h-16 w-16">
+                <img src="logo.JPEG" alt="Samruddhi Academy Logo" class="h-16 w-16">
                 <div>
                     <h1 class="text-2xl font-extrabold text-sca-blue">SAMRUDDHI ACADEMY</h1>
-                    <p class="text-sm text-sca-purple font-semibold tracking-wide">  IAS KAS Coaching center, Davanagere.</p>
+                    <p class="text-sm text-sca-purple font-semibold tracking-wide"> IAS KAS Coaching center, Davanagere.</p>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-6 font-medium text-gray-700">
+            <nav class="hidden md:flex space-x-6 font-medium text-gray-700 items-center">
                 <a href="#home" class="hover:text-sca-blue transition">Home</a>
                 <a href="#about" class="hover:text-sca-blue transition">About Us</a>
-                <a href="#courses" class="hover:text-sca-blue transition">Courses</a>
-               <a href="#testimonials" class="hover:text-sca-blue transition">Testimonials</a>
-              <a href="#gallery" class="hover:text-sca-blue transition">Gallery</a>
-              <a href="#contact" class="hover:text-sca-blue transition">Contact</a>
+                
+                <!-- Interactive Courses Dropdown Menu Link -->
+                <div class="relative dropdown">
+                    <a href="#courses" class="hover:text-sca-blue transition flex items-center space-x-1 py-2">
+                        <span>Courses</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </a>
+                    <div class="absolute left-0 mt-0 w-48 bg-white border border-gray-100 rounded-lg shadow-xl hidden dropdown-menu z-50">
+                        <a href="#course-details-section" onclick="switchCourseTab('upsc')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">UPSC CSE</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('kpsc')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">KPSC (KAS)</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('banking')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">Banking Exams</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('neet')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">NEET Medical</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('jee')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">JEE Engineering</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('kcet')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">K-CET State Entrance</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('skill')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">Skill Dev</a>
+                        <a href="#course-details-section" onclick="switchCourseTab('board')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-sca-blue">Board Exams</a>
+                    </div>
+                </div>
+
+                <a href="#knowledge-hub" class="hover:text-sca-blue transition">Knowledge Hub</a>
+                <a href="#testimonials" class="hover:text-sca-blue transition">Testimonials</a>
+                <a href="#gallery" class="hover:text-sca-blue transition">Gallery</a>
+                <a href="#contact" class="hover:text-sca-blue transition">Contact</a>
             </nav>
-            <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-bold shadow transition text-sm">Enquire Now</a>
+            <a href="https://forms.gle/XbVR8v8bymsaDuz99" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white px-5 py-2.5 rounded-lg font-bold shadow transition text-sm">Enquire Now</a>
         </div>
     </header>
 
     <section id="home" class="relative bg-white py-16 md:py-24">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">A Trusted Academy<br>for <span class="text-sca-blue">Quality Coaching</span> </h2>
+        <div class="container mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 space-y-6">
+                <div class="mb-4">
+                    <img src="mss.png" alt="Registered Trust Logo" class="h-32 w-28 object-cover rounded-xl shadow-md border-2 border-gray-100">
+                    <h1 style="color: dodgerblue; font-style: italic;">Manjunath S S </h1>
+		    <h1 style="color: dodgerblue; font-style: italic;">Founder & Director</h1>
+		    <h1 style="color: dodgerblue; font-style: italic;"> Samruddhi Academy</h1>
+                </div>
                 <p class="text-gray-600 text-lg">Samruddhi Academy offers specialized coaching for competitive exams and academic excellence. Your path to success starts here.</p>
                 <div class="flex space-x-4">
                     <a href="#courses" class="bg-sca-blue hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-bold shadow transition">Explore Courses</a>
                     <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold shadow transition">Enquire Now</a>
                 </div>
             </div>
-            <div>
-                <img src="students.jpeg" alt="Students studying together" class="rounded-2xl shadow-2xl">
+            <div class="md:col-span-7 relative group w-full">
+                <img src="students.jpeg" alt="Students studying together" class="w-full h-auto max-h-[550px] object-cover rounded-2xl shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-2xl flex flex-col justify-end p-8 md:p-12">
+                    <h5 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-md">
+                        A Trusted Academy<br>for <span class="text-sca-orange">Quality Coaching</span>
+                    </h5>
+                </div>
             </div>
         </div>
     </section>
@@ -75,78 +107,396 @@
     <section id="about" class="py-20 bg-gray-100">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="flex justify-center">
-                    <img src="logo.jpeg" alt="Samruddhi Academy Logo" class="h-64 w-64">
+                <div class="flex justify-center items-center space-x-6">
+                    <img src="logo.JPEG" alt="Samruddhi Academy Logo" class="h-56 w-56 object-contain">
                 </div>
                 <div class="space-y-6">
                     <h3 class="text-3xl font-bold text-gray-900">About Samruddhi Academy</h3>
                     <div class="w-20 h-1 bg-sca-green mb-6"></div>
-                    <p class="text-gray-700 leading-relaxed">Established in <strong class="text-sca-blue">2014</strong>, Samruddhi Academy has built a reputation in PJ Extension, Davanagere, as a "Symbol of Quality" coaching. We believe in providing personalized attention and rigorous training to help students achieve their academic and career goals.</p>
+                    <p class="text-gray-700 leading-relaxed">Established in <strong class="text-sca-blue">2014</strong>, Samruddhi Academy has built a reputation in PJ Extension, Davanagere, as a "Symbol of Quality" coaching. Managed under our registered trust, we believe in providing personalized attention and rigorous training to help students achieve their academic and career goals.</p>
                     <p class="text-gray-700">Our experienced faculty and proven teaching methodologies ensure that every student is equipped with the knowledge and confidence to succeed.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MAIN COURSES OVERVIEW SECTION -->
     <section id="courses" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-gray-900">OUR COURSES</h2>
+                <p class="text-gray-500 mt-2">Click any block to instantly view specific subjects, batch durations, and structural curriculum below.</p>
                 <div class="w-24 h-1 bg-sca-purple mx-auto mt-4"></div>
             </div>
+            
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
+                <!-- Course Card 1 -->
+                <div onclick="switchCourseTab('upsc')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-blue transition-all text-center group">
                     <div class="text-5xl text-sca-blue mb-6 transition-transform group-hover:scale-110"><i class="fas fa-landmark"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">UPSC</h3>
-                    <p class="text-gray-600 text-sm">Strategic guidance for Civil Services Examinations to achieve your administrative dreams.</p>
+                    <p class="text-gray-600 text-sm mb-4">Strategic guidance for Civil Services Examinations to achieve your administrative dreams.</p>
+                    <span class="text-xs font-bold text-sca-blue group-hover:underline">View Curriculum & Batches →</span>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
+                <!-- Course Card 2 -->
+                <div onclick="switchCourseTab('kpsc')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-orange transition-all text-center group">
                     <div class="text-5xl text-sca-orange mb-6 transition-transform group-hover:scale-110"><i class="fas fa-map-marked-alt"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">KPSC</h3>
-                    <p class="text-gray-600 text-sm">Focused coaching for Karnataka State Civil Services (KAS) and government exams.</p>
+                    <p class="text-gray-600 text-sm mb-4">Focused coaching for Karnataka State Civil Services (KAS) and government exams.</p>
+                    <span class="text-xs font-bold text-sca-orange group-hover:underline">View Curriculum & Batches →</span>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
+                <!-- Course Card 3 -->
+                <div onclick="switchCourseTab('banking')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-green transition-all text-center group">
                     <div class="text-5xl text-sca-green mb-6 transition-transform group-hover:scale-110"><i class="fas fa-university"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">Banking</h3>
-                    <p class="text-gray-600 text-sm">Targeted preparation for IBPS, SBI PO/Clerk, and competitive banking sector exams.</p>
+                    <p class="text-gray-600 text-sm mb-4">Targeted preparation for IBPS, SBI PO/Clerk, and competitive banking sector exams.</p>
+                    <span class="text-xs font-bold text-sca-green group-hover:underline">View Curriculum & Batches →</span>
                 </div>
 
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
-                    <div class="text-5xl text-sca-purple mb-6 transition-transform group-hover:scale-110"><i class="fas fa-laptop-code"></i></div>
-                    <h3 class="text-2xl font-bold text-gray-950 mb-3">Skill Dev</h3>
-                    <p class="text-gray-600 text-sm">Empowering students with vital industry skills, computer literacy, and communication training.</p>
-                </div>
-                  
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
-                    <div class="text-5xl text-sca-orange mb-6 transition-transform group-hover:scale-110"><i class="fas fa-stethoscope"></i></div>
+                <!-- Course Card 4 -->
+                <div onclick="switchCourseTab('neet')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-purple transition-all text-center group">
+                    <div class="text-5xl text-sca-purple mb-6 transition-transform group-hover:scale-110"><i class="fas fa-stethoscope"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">NEET</h3>
-                    <p class="text-gray-600 text-sm">Comprehensive coaching for the National Eligibility cum Entrance Test for medical aspirants.</p>
+                    <p class="text-gray-600 text-sm mb-4">Comprehensive coaching for the National Eligibility cum Entrance Test for medical aspirants.</p>
+                    <span class="text-xs font-bold text-sca-purple group-hover:underline">View Curriculum & Batches →</span>
                 </div>
                 
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
+                <!-- Course Card 5 -->
+                <div onclick="switchCourseTab('jee')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-blue transition-all text-center group">
                     <div class="text-5xl text-sca-blue mb-6 transition-transform group-hover:scale-110"><i class="fas fa-atom"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">JEE</h3>
-                    <p class="text-gray-600 text-sm">Rigorous training for Joint Entrance Examination to enter premier engineering institutes.</p>
+                    <p class="text-gray-600 text-sm mb-4">Rigorous training for Joint Entrance Examination to enter premier engineering institutes.</p>
+                    <span class="text-xs font-bold text-sca-blue group-hover:underline">View Curriculum & Batches →</span>
                 </div>
                 
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
-                    <div class="text-5xl text-sca-green mb-6 transition-transform group-hover:scale-110"><i class="fas fa-book-open"></i></div>
+                <!-- Course Card 6 -->
+                <div onclick="switchCourseTab('kcet')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-orange transition-all text-center group">
+                    <div class="text-5xl text-sca-orange mb-6 transition-transform group-hover:scale-110"><i class="fas fa-book-open"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">K-CET</h3>
-                    <p class="text-gray-600 text-sm">Specialized preparation for the Karnataka Common Entrance Test.</p>
+                    <p class="text-gray-600 text-sm mb-4">Specialized preparation for the Karnataka Common Entrance Test.</p>
+                    <span class="text-xs font-bold text-sca-orange group-hover:underline">View Curriculum & Batches →</span>
                 </div>
-                
-                <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group">
+
+                <!-- Course Card 7 -->
+                <div onclick="switchCourseTab('skill')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-green transition-all text-center group">
+                    <div class="text-5xl text-sca-green mb-6 transition-transform group-hover:scale-110"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="text-2xl font-bold text-gray-950 mb-3">Skill Dev</h3>
+                    <p class="text-gray-600 text-sm mb-4">Empowering students with vital industry skills, computer literacy, and communication training.</p>
+                    <span class="text-xs font-bold text-sca-green group-hover:underline">Join Program →</span>
+                </div>
+
+                <!-- Course Card 8 -->
+                <div onclick="switchCourseTab('board')" class="cursor-pointer bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sca-purple transition-all text-center group">
                     <div class="text-5xl text-sca-purple mb-6 transition-transform group-hover:scale-110"><i class="fas fa-graduation-cap"></i></div>
                     <h3 class="text-2xl font-bold text-gray-950 mb-3">Board Exams</h3>
-                    <p class="text-gray-600 text-sm">Expert guidance for achieving high scores in PUC and other major board examinations.</p>
+                    <p class="text-gray-600 text-sm mb-4">Expert guidance for achieving high scores in PUC and other major board examinations.</p>
+                    <span class="text-xs font-bold text-sca-purple group-hover:underline">View Formats & Tuitions →</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="Knowledge Hub" class="py-20 bg-gray-50">
+    <!-- INTERACTIVE DYNAMIC TARGET SPACE FOR COURSE SUB-DETAILS -->
+    <section id="course-details-section" class="py-12 bg-gray-100 border-t border-b border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 max-w-5xl mx-auto">
+                
+                <!-- Fallback Initial Prompt Panel -->
+                <div id="course-placeholder-msg" class="text-center py-8">
+                    <i class="fas fa-hand-pointer text-4xl text-sca-blue animate-bounce mb-3"></i>
+                    <h4 class="text-xl font-bold text-gray-800">Select a course above or via navigation to inspect details</h4>
+                    <p class="text-gray-500 text-sm max-w-md mx-auto mt-1">Explore detailed timelines including crash programs, micro-subjects covered, short-term and integrated long-term training paths.</p>
+                </div>
+
+                <!-- DYNAMIC PANE: UPSC -->
+                <div id="pane-upsc" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-blue text-white text-xs px-3 py-1 rounded-full font-bold">Civil Services Block</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">UPSC Civil Services Examination (CSE)</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Apply for Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h5 class="font-bold text-sca-blue flex items-center"><i class="fas fa-bolt mr-2"></i> Crash Course</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 2 - 3 Months</p>
+                            <p class="text-sm text-gray-700">High-yield Prelims revision capsule focusing specifically on Current Affairs trends, CSAT quick-solving methods, and rapid question elimination mapping.</p>
+                        </div>
+                        <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                            <h5 class="font-bold text-sca-orange flex items-center"><i class="fas fa-calendar-minus mr-2"></i> Short Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 6 Months</p>
+                            <p class="text-sm text-gray-700">Targeted preparation for dynamic syllabus modules, custom Answer Writing strategies, intensive GS core pillared practices, and dedicated test evaluation arrays.</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h5 class="font-bold text-sca-purple flex items-center"><i class="fas fa-calendar-alt mr-2"></i> Long Term / Integrated</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 1 Year / Foundation</p>
+                            <p class="text-sm text-gray-700">Comprehensive end-to-end framework layout covering NCERT baselines, advanced standard texts, Optional Subject tracks, and multi-tiered interview guidance setups.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-3 flex items-center"><i class="fas fa-book-reader text-sca-blue mr-2"></i> Core Covered Subjects</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Indian Polity & Constitution</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">History (Ancient, Medieval, Modern)</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Economics & Financial Systems</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Geography & Environment</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">International Relations</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">CSAT (Aptitude & Reasoning)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC PANE: KPSC -->
+                <div id="pane-kpsc" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-orange text-white text-xs px-3 py-1 rounded-full font-bold">State Public Service Commission</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">KPSC Gazetted Probationers (KAS)</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Apply for Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h5 class="font-bold text-sca-blue flex items-center"><i class="fas fa-bolt mr-2"></i> Crash Course</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 45 Days to 2 Months</p>
+                            <p class="text-sm text-gray-700">Speed-run matrix over Karnataka State Budget blueprints, Economic Surveys, regional currents, and high-frequency objective question patterns.</p>
+                        </div>
+                        <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                            <h5 class="font-bold text-sca-orange flex items-center"><i class="fas fa-calendar-minus mr-2"></i> Short Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 5 Months</p>
+                            <p class="text-sm text-gray-700">Dedicated focus balancing regional sub-history, local administration protocols, state-specific issues, and descriptive Kannada/English language essay writing.</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h5 class="font-bold text-sca-purple flex items-center"><i class="fas fa-calendar-alt mr-2"></i> Long Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 10 - 12 Months</p>
+                            <p class="text-sm text-gray-700">Exhaustive holistic baseline coaching matching combined KPSC syllabus structures. Features periodic model evaluation sheets and personalized offline mock panel interviews.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-3 flex items-center"><i class="fas fa-book-reader text-sca-orange mr-2"></i> Core Covered Subjects</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Karnataka History & Heritage</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">State Geography & Resources</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Rural Development & Panchayats</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Indian & Regional Economy</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">General Mental Ability</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Compulsory Language Skills</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC PANE: BANKING -->
+                <div id="pane-banking" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-green text-white text-xs px-3 py-1 rounded-full font-bold">Banking & Insurance Track</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">IBPS / SBI PO & Clerical Cadres</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Apply for Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h5 class="font-bold text-sca-blue flex items-center"><i class="fas fa-bolt mr-2"></i> Crash Course</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 30 Days Intensive</p>
+                            <p class="text-sm text-gray-700">Rigorous fast-track tricks module designed explicitly around rapid calculations, speed math hacks, data setups, and computerized testing simulation labs.</p>
+                        </div>
+                        <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                            <h5 class="font-bold text-sca-orange flex items-center"><i class="fas fa-calendar-minus mr-2"></i> Short Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 3 Months</p>
+                            <p class="text-sm text-gray-700">Standard standard system parsing section-wise methodologies, foundational reasoning puzzle grids, and conceptual financial terminology matrices.</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h5 class="font-bold text-sca-purple flex items-center"><i class="fas fa-calendar-alt mr-2"></i> Long Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 6 Months Unlimited Pass</p>
+                            <p class="text-sm text-gray-700">Continuous iterative preparation sequence extending across RBI, SBI, regional rural banks (RRB), insurance tests, and customized mock setups.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-3 flex items-center"><i class="fas fa-book-reader text-sca-green mr-2"></i> Core Covered Subjects</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Quantitative Aptitude & DI</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Logical & Critical Reasoning</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">English Grammar & Comprehension</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Banking & Financial Awareness</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Current Economic Affairs</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Computer Concepts Aptitude</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC PANE: NEET -->
+                <div id="pane-neet" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-purple text-white text-xs px-3 py-1 rounded-full font-bold">Medical Entrance</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">NEET Coaching Program</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Apply for Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h5 class="font-bold text-sca-blue flex items-center"><i class="fas fa-bolt mr-2"></i> Crash Course</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 40 Days Post-Boards</p>
+                            <p class="text-sm text-gray-700">Rapid formula revision blocks, direct NCERT diagram mapping reviews, everyday test routines, and comprehensive mock tracking configurations.</p>
+                        </div>
+                        <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                            <h5 class="font-bold text-sca-orange flex items-center"><i class="fas fa-calendar-minus mr-2"></i> Short Term / Repeater</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 10 Months Dropper Batch</p>
+                            <p class="text-sm text-gray-700">Full immersion module for students entirely focused on boosting tracking rankings. Complete conceptual breakdown unburdened by everyday schooling schedules.</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h5 class="font-bold text-sca-purple flex items-center"><i class="fas fa-calendar-alt mr-2"></i> Long Term / Integrated</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 2 Year Integrated (PUC+NEET)</p>
+                            <p class="text-sm text-gray-700">Flawless synchronous track aligning State Board/CBSE concepts side by side with rigorous competitive MCQs execution strategies from ground up.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-3 flex items-center"><i class="fas fa-book-reader text-sca-purple mr-2"></i> Core Covered Subjects</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Botany (Plant Physiology, Genetics)</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Zoology (Human Anatomy, Evolution)</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Organic & Inorganic Chemistry</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Physical Chemistry Formulations</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Mechanics & Electrodynamics</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Modern Physics & Optics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC PANE: JEE -->
+                <div id="pane-jee" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-blue text-white text-xs px-3 py-1 rounded-full font-bold">Engineering Entrance</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">JEE (Mains & Advanced)</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Apply for Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h5 class="font-bold text-sca-blue flex items-center"><i class="fas fa-bolt mr-2"></i> Crash Course</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 2 Months Target</p>
+                            <p class="text-sm text-gray-700">Problem-solving intensive sessions prioritizing high-weightage numerical matrix architectures and quick-solving elimination patterns.</p>
+                        </div>
+                        <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                            <h5 class="font-bold text-sca-orange flex items-center"><i class="fas fa-calendar-minus mr-2"></i> Short Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 6 Months Bootcamp</p>
+                            <p class="text-sm text-gray-700">Mid-term booster tracking systems intended to refine advanced physics calculations and rigorous calculus concepts.</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h5 class="font-bold text-sca-purple flex items-center"><i class="fas fa-calendar-alt mr-2"></i> Long Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 2 Year Master Classes</p>
+                            <p class="text-sm text-gray-700">Deep structural engineering foundation starting from standard basics moving comprehensively into highly tricky analytical logical proofs.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-3 flex items-center"><i class="fas fa-book-reader text-sca-blue mr-2"></i> Core Covered Subjects</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Calculus, Algebra & Trigonometry</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Coordinate Geometry & Vectors</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Thermodynamics & Kinematics</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Electricity & Magnetism</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Physical, Organic, Inorganic Chemistry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC PANE: KCET -->
+                <div id="pane-kcet" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-orange text-white text-xs px-3 py-1 rounded-full font-bold">State Engineering Entrance</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">K-CET (Karnataka Common Entrance Test)</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Apply for Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100">
+                            <h5 class="font-bold text-sca-blue flex items-center"><i class="fas fa-bolt mr-2"></i> Crash Course</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 30-45 Days</p>
+                            <p class="text-sm text-gray-700">Dedicated speed-solving shortcut systems targeting 60 questions in 60 minutes constraints per subject area.</p>
+                        </div>
+                        <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100">
+                            <h5 class="font-bold text-sca-orange flex items-center"><i class="fas fa-calendar-minus mr-2"></i> Short Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 4 Months</p>
+                            <p class="text-sm text-gray-700">In-depth chapter-by-chapter mapping over state syllabus blueprints coupled with regular tracking exercises.</p>
+                        </div>
+                        <div class="bg-purple-50/50 p-5 rounded-xl border border-purple-100">
+                            <h5 class="font-bold text-sca-purple flex items-center"><i class="fas fa-calendar-alt mr-2"></i> Long Term</h5>
+                            <p class="text-xs text-gray-500 mt-1 mb-3">Duration: 1 Year Integrated</p>
+                            <p class="text-sm text-gray-700">Complete foundational synchronization program designed perfectly alongside everyday standard PUC curriculum classes.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-3 flex items-center"><i class="fas fa-book-reader text-sca-orange mr-2"></i> Core Covered Subjects</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Physics (PUC I & II Syllabus)</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Chemistry (PUC I & II Concepts)</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Mathematics (Shortcut Formulae Matrices)</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-md font-medium">Biology (Optional Cross Track Modules)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW UPDATED PANE: SKILL DEV -->
+                <div id="pane-skill" class="course-detail-pane text-center py-6 space-y-6">
+                    <div class="max-w-md mx-auto bg-green-50/60 border border-green-200 p-8 rounded-2xl shadow-inner">
+                        <div class="text-5xl text-sca-green mb-4"><i class="fas fa-laptop-code animate-pulse"></i></div>
+                        <h3 class="text-3xl font-extrabold text-gray-900">Skill Development</h3>
+                        <p class="text-gray-600 mt-2 text-sm leading-relaxed">Boost your placement opportunities with computer operational mastery, presentation skill building, and technical communication blueprints.</p>
+                        <div class="pt-6">
+                            <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="inline-block bg-sca-green hover:bg-green-600 text-white font-extrabold text-base px-8 py-3.5 rounded-xl shadow-md transition transform hover:-translate-y-0.5 tracking-wide">
+                                Apply Now <i class="fas fa-paper-plane ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW UPDATED PANE: BOARD EXAMS -->
+                <div id="pane-board" class="course-detail-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="bg-sca-purple text-white text-xs px-3 py-1 rounded-full font-bold">Academic Core Schooling</span>
+                            <h3 class="text-3xl font-extrabold text-gray-950 mt-1">Board Examinations (PUC & School Modules)</h3>
+                        </div>
+                        <a href="https://forms.gle/XbVR8v8bymsaDuz96" target="_blank" class="bg-sca-orange hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-bold shadow text-center">Enquire About Batches</a>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Format 1 -->
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="text-2xl text-sca-blue mb-2"><i class="fas fa-book-open"></i></div>
+                            <h5 class="font-bold text-gray-900 text-lg">Regular Tuitions</h5>
+                            <p class="text-sm text-gray-600 mt-1">Comprehensive weekday learning tracks focusing completely on text interpretations, concepts mapping, and regular assignment tasks.</p>
+                        </div>
+                        <!-- Format 2 -->
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="text-2xl text-sca-orange mb-2"><i class="fas fa-calendar-week"></i></div>
+                            <h5 class="font-bold text-gray-900 text-lg">Weekend Tuitions</h5>
+                            <p class="text-sm text-gray-600 mt-1">Syllabus targeting setups specifically designed for outstation candidates or integrated classroom pupils seeking supplementary support panels.</p>
+                        </div>
+                        <!-- Format 3 -->
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="text-2xl text-sca-purple mb-2"><i class="fas fa-bolt"></i></div>
+                            <h5 class="font-bold text-gray-900 text-lg">Crash Course</h5>
+                            <p class="text-sm text-gray-600 mt-1">Rapid final countdown modules featuring previous years question parsing matrices, blueprint optimizations, and mock series.</p>
+                        </div>
+                        <!-- Format 4 -->
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="text-2xl text-sca-green mb-2"><i class="fas fa-sun"></i></div>
+                            <h5 class="font-bold text-gray-900 text-lg">Summer Batches</h5>
+                            <p class="text-sm text-gray-600 mt-1">Early foundational transition matrices designed during spring vacations to offer students a significant conceptual headstart.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KNOWLEDGE HUB SECTION -->
+    <section id="knowledge-hub" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-gray-900">KNOWLEDGE HUB</h2>
@@ -185,6 +535,7 @@
                 <div class="w-24 h-1 bg-sca-green mx-auto mt-4"></div>
             </div>
             <div class="relative max-w-4xl mx-auto overflow-hidden">
+                
                 <!-- Slide 1 -->
                 <div class="testimonial-slide active bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
                     <img src="kiran.jpeg" alt="Kiran" class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue object-cover">
@@ -194,6 +545,7 @@
                         <p class="text-sm">Academy Achiever</p>
                     </div>
                 </div>
+                
                 <!-- Slide 2 -->
                 <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
                     <img src="Manju.jpeg" alt="Manju" class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue object-cover">
@@ -203,6 +555,7 @@
                         <p class="text-sm">Academy Achiever</p>
                     </div>
                 </div>
+                
                 <!-- Slide 3 -->
                 <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
                     <img src="Sharath.jpeg" alt="Sharath S M" class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue object-cover">
@@ -212,6 +565,7 @@
                         <p class="text-sm">Academy Achiever</p>
                     </div>
                 </div>
+                
                 <!-- Slide 4 -->
                 <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
                     <img src="Yash.jpeg" alt="Yashavantharaj A V" class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue object-cover">
@@ -221,21 +575,126 @@
                         <p class="text-sm">Academy Achiever</p>
                     </div>
                 </div>
+
+                <!-- Slide 5 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-purple flex items-center justify-center text-white text-2xl font-bold">AB</div>
+                    <p class="text-xl text-gray-700 italic">"The UPSC roadmap provided here is incredibly accurate. The regular answer-writing mock sessions transformed my execution strategy."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Ananya Biradar</p>
+                        <p class="text-sm">Civil Services Aspirant</p>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-orange flex items-center justify-center text-white text-2xl font-bold">CN</div>
+                    <p class="text-xl text-gray-700 italic">"Highly dedicated staff for KPSC preparation. The comprehensive study modules on Karnataka history and geography were absolute lifesavers."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Chetan Naik</p>
+                        <p class="text-sm">KAS Rank Achiever</p>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-green flex items-center justify-center text-white text-2xl font-bold">DR</div>
+                    <p class="text-xl text-gray-700 italic">"For banking exams, their shortcut tricks for quantitative aptitude and reasoning are unmatched. Passed IBPS PO on my very first try!"</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Deepa Rao</p>
+                        <p class="text-sm">Probationary Officer (SBI)</p>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-blue flex items-center justify-center text-white text-2xl font-bold">HK</div>
+                    <p class="text-xl text-gray-700 italic">"The digital classrooms and detailed laboratory simulations simplified tough physics concepts for NEET. Highly recommended!"</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Harish Kulkarni</p>
+                        <p class="text-sm">Medical Aspirant (NEET)</p>
+                    </div>
+                </div>
+
+                <!-- Slide 9 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-purple flex items-center justify-center text-white text-2xl font-bold">JM</div>
+                    <p class="text-xl text-gray-700 italic">"Excellent mentorship! They don't just dump books on you; they trace your individual weak spots and work with you to improve them."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Jyothi M.</p>
+                        <p class="text-sm">K-CET Top 500 Ranker</p>
+                    </div>
+                </div>
+
+                <!-- Slide 10 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-orange flex items-center justify-center text-white text-2xl font-bold">MK</div>
+                    <p class="text-xl text-gray-700 italic">"The competitive atmosphere here kept me driven. The library facilities allowed me to study for hours without any outside distractions."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Manoj Kumar</p>
+                        <p class="text-sm">JEE Advanced Qualifier</p>
+                    </div>
+                </div>
+
+                <!-- Slide 11 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-green flex items-center justify-center text-white text-2xl font-bold">PP</div>
+                    <p class="text-xl text-gray-700 italic">"Samruddhi Academy gave me the confidence to score 96% in my PUC board exams. The balanced approach to theory and entrance tests is phenomenal."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Pooja Patel</p>
+                        <p class="text-sm">PUC Board Distinction Holder</p>
+                    </div>
+                </div>
+
+                <!-- Slide 12 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-blue flex items-center justify-center text-white text-2xl font-bold">RG</div>
+                    <p class="text-xl text-gray-700 italic">"Their unique skill development workshops helped refine my interview communication abilities. The placement guidance program is exceptional."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Rahul Goudar</p>
+                        <p class="text-sm">Skill Dev Graduate</p>
+                    </div>
+                </div>
+
+                <!-- Slide 13 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-purple flex items-center justify-center text-white text-2xl font-bold">SB</div>
+                    <p class="text-xl text-gray-700 italic">"The test series is exceptionally rigorous. It mirrored the real exam pattern so perfectly that I felt zero pressure on exam day."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Siddharth Bhaskar</p>
+                        <p class="text-sm">Banking Exam Achiever</p>
+                    </div>
+                </div>
+
+                <!-- Slide 14 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-orange flex items-center justify-center text-white text-2xl font-bold">TS</div>
+                    <p class="text-xl text-gray-700 italic">"The faculty group makes all the difference. They remain available even after scheduled hours to systematically dismantle complex doubts."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Tejaswini S.</p>
+                        <p class="text-sm">UPSC Civil Services Aspirant</p>
+                    </div>
+                </div>
+
+                <!-- Slide 15 -->
+                <div class="testimonial-slide bg-gray-50 p-10 rounded-2xl shadow-inner border text-center space-y-6">
+                    <div class="w-24 h-24 rounded-full mx-auto border-4 border-sca-blue bg-sca-green flex items-center justify-center text-white text-2xl font-bold">VK</div>
+                    <p class="text-xl text-gray-700 italic">"Joining Samruddhi Academy was the single turning point of my career. The structured mentorship pushed me to consistently cross my targets."</p>
+                    <div class="text-sca-blue">
+                        <p class="font-bold">Vinay Kumar</p>
+                        <p class="text-sm">KPSC PDO Qualifier</p>
+                    </div>
+                </div>
                 
                 <button onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-sca-blue text-white p-3 rounded-full -translate-x-1/2 shadow hover:bg-sca-purple"><i class="fas fa-chevron-left"></i></button>
                 <button onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-sca-blue text-white p-3 rounded-full translate-x-1/2 shadow hover:bg-sca-purple"><i class="fas fa-chevron-right"></i></button>
             </div>
             
-            <div id="slider-dots" class="flex justify-center space-x-2 mt-8">
-                <span class="w-3 h-3 bg-sca-blue rounded-full cursor-pointer opacity-100 animate-pulse" onclick="showSlide(0)"></span>
-                <span class="w-3 h-3 bg-sca-blue rounded-full cursor-pointer opacity-40" onclick="showSlide(1)"></span>
-                <span class="w-3 h-3 bg-sca-blue rounded-full cursor-pointer opacity-40" onclick="showSlide(2)"></span>
-                <span class="w-3 h-3 bg-sca-blue rounded-full cursor-pointer opacity-40" onclick="showSlide(3)"></span>
-            </div>
+            <div id="slider-dots" class="flex justify-center flex-wrap gap-2 mt-8 max-w-xl mx-auto"></div>
         </div>
     </section>
 
-    <!-- NEW GALLERY & MEDIA SECTION (BEFORE CONTACT US) -->
+    <!-- CAMPUS GALLERY SECTION WITH 6 PHOTOS SPACE -->
     <section id="gallery" class="py-20 bg-gray-100">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
@@ -244,50 +703,68 @@
                 <p class="text-gray-600 mt-4 max-w-xl mx-auto">Take a visual tour through our academy classrooms, highlight events, and streaming learning setups.</p>
             </div>
 
-            <!-- Photos Subgrid -->
             <div class="mb-14">
                 <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-2">
                     <i class="fas fa-images text-sca-blue"></i>
                     <span>Photo Gallery</span>
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <!-- Photo Card 1 -->
+                    <!-- Photo 1 -->
                     <div class="relative group overflow-hidden bg-white rounded-xl shadow-md border border-gray-200">
-                        <img src="studio.jpeg" alt="Academy Event 1" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <img src="studio.jpeg" alt="Academy Setup Studio" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Media suite</span>
+                            <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Media Suite</span>
                         </div>
                     </div>
-                    <!-- Photo Card 2 -->
+                    <!-- Photo 2 -->
                     <div class="relative group overflow-hidden bg-white rounded-xl shadow-md border border-gray-200">
-                        <img src="photo2.jpg" alt="Academy Event 2" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <img src="photo2.jpg" alt="Classroom Study Session" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Classroom Learning</span>
                         </div>
                     </div>
-                    <!-- Photo Card 3 -->
+                    <!-- Photo 3 -->
                     <div class="relative group overflow-hidden bg-white rounded-xl shadow-md border border-gray-200">
-                        <img src="cerem.jpg" alt="Academy Event 3" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <img src="cerem.jpg" alt="Felicitation Ceremony" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Felicitation Ceremony</span>
+                        </div>
+                    </div>
+                    <!-- Photo 4 -->
+                    <div class="relative group overflow-hidden bg-white rounded-xl shadow-md border border-gray-200">
+                        <img src="photo4.jpg" alt="Academy Library Workspace" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Self Study Library</span>
+                        </div>
+                    </div>
+                    <!-- Photo 5 -->
+                    <div class="relative group overflow-hidden bg-white rounded-xl shadow-md border border-gray-200">
+                        <img src="photo5.jpg" alt="Interactive Seminar Block" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Interactive Seminar</span>
+                        </div>
+                    </div>
+                    <!-- Photo 6 -->
+                    <div class="relative group overflow-hidden bg-white rounded-xl shadow-md border border-gray-200">
+                        <img src="photo6.jpg" alt="Achievers Group Image" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white bg-sca-blue/80 px-4 py-2 rounded-full text-xs font-semibold">Rank Achievers Meet</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Videos Subgrid -->
+            <!-- Videos Area -->
             <div>
                 <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-2">
                     <i class="fas fa-video text-sca-orange"></i>
                     <span>Video Room</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Video Card 1 -->
                     <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 flex flex-col space-y-3">
                         <div class="rounded-lg overflow-hidden bg-black aspect-video relative">
                             <video class="w-full h-full object-cover" controls preload="metadata">
                                 <source src="video1.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         </div>
                         <div>
@@ -295,12 +772,10 @@
                             <p class="text-gray-500 text-sm">A brief look into our infrastructural setups in PJ Extension.</p>
                         </div>
                     </div>
-                    <!-- Video Card 2 -->
                     <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 flex flex-col space-y-3">
                         <div class="rounded-lg overflow-hidden bg-black aspect-video relative">
                             <video class="w-full h-full object-cover" controls preload="metadata">
                                 <source src="video2.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
                             </video>
                         </div>
                         <div>
@@ -343,12 +818,12 @@
                         </div>
                     </div>
                     <div class="rounded-xl overflow-hidden border-4 border-white shadow-xl h-64">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15473.193163158023!2d75.91896898863692!3d14.468897816828594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bba2f587a8f334d%3A0xe54d24660e54619!2sPJ%20Extension%2C%20Davanagere%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15473.193163158023!2d75.91896898863692!3d14.468897816828594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bba2f587a8f334d%3A0xe54d24660e54619!2sPJ%20Extension%2C%20Davanagere%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 
                 <div class="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl text-center space-y-6 border border-gray-100">
-                    <div class="flex justify-center">
+                    <div class="flex justify-center space-x-4">
                         <div class="p-1 bg-gray-50 border border-gray-200 rounded-full shadow-inner">
                             <img src="logo.JPEG" alt="Academy Logo Small" class="h-16 w-16 rounded-full object-cover">
                         </div>
@@ -360,7 +835,7 @@
                             Fill Online Enquiry Form <i class="fas fa-external-link-alt ml-2 text-sm"></i>
                         </a>
                     </div>
-                    <p class="text-xs text-gray-400 mt-2"><i class="fas fa-shield-alt mr-1"></i> Safe & secure official Google Form connection</p>
+                    <p class="text-xs text-gray-400 mt-2"><i class="fas fa-shield-alt mr-1"></i> Safe & secure official Registered Trust connection</p>
                 </div>
             </div>
         </div>
@@ -371,23 +846,47 @@
             <p>&copy; 2014 Samruddhi Academy. All Rights Reserved.</p>
             <p class="text-xs">PJ Extension, Davanagere - Karnataka | Contact Us: +91-9620262361 / +91-8147262361</p>
         </div>
-    </footer >
+    </footer>
 
     <script>
+        // COURSE SUB-TAB SWITCHING FUNCTION
+        function switchCourseTab(courseId) {
+            document.getElementById('course-placeholder-msg').style.display = 'none';
+            
+            const panes = document.querySelectorAll('.course-detail-pane');
+            panes.forEach(pane => pane.classList.remove('active'));
+            
+            const targetPane = document.getElementById('pane-' + courseId);
+            if(targetPane) {
+                targetPane.classList.add('active');
+                document.getElementById('course-details-section').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // TESTIMONIAL SLIDER SCRIPT
         let currentSlide = 0;
         const slides = document.querySelectorAll('.testimonial-slide');
+        const dotsContainer = document.getElementById('slider-dots');
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = "w-3 h-3 bg-sca-blue rounded-full cursor-pointer transition-all duration-300 opacity-40";
+            dot.onclick = () => showSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+
         const dots = document.querySelectorAll('#slider-dots span');
 
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => {
                 dot.classList.add('opacity-40');
-                dot.classList.remove('opacity-100', 'animate-pulse');
+                dot.classList.remove('opacity-100', 'scale-125');
             });
 
             slides[index].classList.add('active');
             dots[index].classList.remove('opacity-40');
-            dots[index].classList.add('opacity-100', 'animate-pulse');
+            dots[index].classList.add('opacity-100', 'scale-125');
             currentSlide = index;
         }
 
@@ -401,8 +900,8 @@
             showSlide(prev);
         }
 
+        showSlide(0);
         setInterval(nextSlide, 6500);
     </script>
-
 </body>
 </html>
